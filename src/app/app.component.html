@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <!-- Input section for selecting number of seats -->
+  <div class="input-section" *ngIf="!isBookingComplete">
+    <label for="seatCount">Select the number of seats to book:</label>
+    <!-- Input box for seat count with validation -->
+    <input 
+      type="number" 
+      id="seatCount" 
+      #numSeats 
+      class="input-box" 
+      min="1" 
+      max="7" 
+      placeholder="Max 7 seats"
+      (input)="errorMessage = null" 
+    />
+    <!-- Button to trigger seat selection -->
+    <button class="book-btn" (click)="bookSeats(numSeats.value)">Find Seats</button>
+  </div>
+
+  <!-- Seat layout with clickable seats -->
+  <div *ngIf="!isBookingComplete" class="seat-layout">
+    <h2>Select Your Seats:</h2>
+    <!-- Loop through rows and display seats -->
+    <div *ngFor="let row of seats; let rowIndex = index" class="seat-row">
+      <!-- Individual seat rendering with dynamic class and click functionality -->
+      <span 
+        *ngFor="let seat of row" 
+        [class]="getSeatClass(seat)" 
+        (click)="toggleSeatSelection(seat)">
+        {{ seat }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Display selected seats and confirmation button -->
+  <div *ngIf="selectedSeats.length > 0 && !isBookingComplete" class="selection-summary">
+    <h3>Selected Seats:</h3>
+    <div class="selected-seats">
+      <!-- Show selected seat numbers -->
+      <span *ngFor="let seat of selectedSeats" class="seat-tag">{{ seat }}</span>
+    </div>
+    <!-- Button to confirm the seat booking -->
+    <button class="confirm-btn" (click)="confirmBooking()">Confirm Booking</button>
+  </div>
+
+  <!-- Display booking success message and booked seat details -->
+  <div *ngIf="isBookingComplete" class="booking-complete">
+    <h2>Booking Successful! 🎉</h2>
+    <p>Thank you for booking with us. Your seats are reserved.</p>
+
+    <!-- Summary of booked seats and total price -->
+    <div class="booked-summary">
+      <h3>Your Booked Seats:</h3>
+      <div class="booked-seats">
+        <!-- Show booked seat numbers -->
+        <span *ngFor="let seat of bookedSeats" class="seat-tag">{{ seat }}</span>
+      </div>
+      <p class="total-price">Total Price: ₹{{ getTotalPrice() }}</p>
+    </div>
+
+    <!-- Button to reset the form and book more seats -->
+    <button class="reset-btn" (click)="resetBooking()">Book More Seats</button>
+  </div>
+
+  <!-- Error message display -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

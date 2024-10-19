@@ -1,0 +1,271 @@
+/* General page background */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #e0f2f1); /* Light gradient background */
+  min-height: 100vh; /* Ensures background covers full height */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the container vertically and horizontally */
+}
+
+.container {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+/* Titles */
+h1 {
+  font-size: 2.5em;
+  color: #0c0e0f;
+  margin-bottom: 20px;
+  animation: fadeIn 0.5s;
+}
+
+/* Input section styles */
+.input-section {
+  margin-bottom: 20px;
+  animation: slideIn 0.5s; /* Slide in effect for input section */
+}
+
+.input-box {
+  width: 100px; /* Increased width for better visibility */
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input-box:focus {
+  border-color: #4A90E2; /* Highlight border on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Glow effect on focus */
+}
+
+.book-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.book-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Seat layout */
+.seat-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Seat styles */
+.seat {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  border: 2px solid #ddd;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+  border-color: #4A90E2;
+  box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+/* Seat colors */
+.seat.available {
+  background-color: #eee;
+}
+
+.seat.booked {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.seat.selected {
+  background-color: #4CAF50;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Selection summary */
+.selection-summary {
+  margin: 20px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s;
+}
+
+.selected-seats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.seat-tag {
+  background-color: #4CAF50;
+  color: white;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.5s;
+}
+
+/* Confirmation button */
+.confirm-btn {
+  padding: 10px 20px;
+  background-color: #4A90E2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn:hover {
+  background-color: #357ABD;
+}
+
+/* Booking completion */
+.booking-complete {
+  text-align: center;
+  background-color: #e0ffe0;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s;
+}
+
+.total-price {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  margin-top: 20px;
+  font-size: 1.2em;
+  animation: shake 0.5s;
+}
+
+/* Reset button */
+.reset-btn {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Booked seats container */
+.booked-summary {
+  margin: 20px;
+  padding: 15px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.booked-seats-container {
+  max-height: 100px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.booked-seats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
